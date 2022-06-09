@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylelive.css">
+  <title>Live</title>
+</head>
+<body>
+  <script>
+    async function pruebalo(){
+    const response = await fetch ("/local");
+    const data = await response.json();
+    console.log(data);
+    mostrarlo(data);
+    
+    }
+    pruebalo();
+ 
+    function mostrarlo(s)  {
+      
+   let html = "";
+   for (let i = 0; i < s.length; i++) {
+   html = s[i].local;
+   let container = document.querySelector("#local");
+   container.innerHTML = html;
+ 
+    }
+  }
+
+  async function pruebalov(){
+    const response = await fetch ("/visitantes");
+    const data = await response.json();
+    console.log(data);
+    mostrarvis(data);
+    
+    }
+    pruebalov();
+ 
+    function mostrarvis(v)  {
+      
+   let html = "";
+   for (let i = 0; i < v.length; i++) {
+   html = v[i].visitante;
+   let container = document.querySelector("#visitante");
+   container.innerHTML = html;
+ 
+    }
+  }
+   </script>
+
+  <div class="container">
+    <div class="match">
+      </div>
+      <div class="match-content">
+        <div class="column">
+          <div class="team team--home">
+            <h2 class="team-name" id="local" ></h2>
+          </div>
+        </div>
+        <div class="column">
+          <div class="match-details">
+            <div class="match-date" >
+              3 May at <strong>17:30</strong>
+            </div>
+            <div class="match-score">
+              <span class="match-score-number match-score-number--leading">3</span>
+              <span class="match-score-divider">:</span>
+              <span class="match-score-number">10</span>
+            </div>
+            <div class="match-time-lapsed">
+              72'
+            </div>
+            <div class="match-referee">
+              Referee: <strong>Mike dean</strong>
+            </div>
+        </div>
+        <h2 class="team-name" id="visitante"> </h2>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

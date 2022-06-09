@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Arbitros</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+body {
+  margin: 0;
+  height: 100vh;
+  padding: 0;
+  font-family: "lato", sans-seriff;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+#searchInput {
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#searchInput:focus {
+  border-bottom: 2px solid #4575b6;
+}
+</style>
+</head>
+<body>
+	<script> 
+ 	async function prueba(){
+		const response = await fetch ("/data1");
+		const data = await response.json();
+		console.log(data);
+		mostrarData(data);
+    }
+    prueba();
+	function mostrarData(result)  {
+	let html = "";
+  for (let i = 0; i < result.length; i++) {
+		html += `
+        <table border="1" style="float:left;" width="40%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+            <h2> <center>${result[i].apellido} ${result[i].nombre} , ${result[i].procedencia} </center></h2>
+        </td>
+      </tr>
+          `;
+    }
+	let container = document.querySelector("#data");
+	container.innerHTML = html;
+	}
+	</script>
+	      <title> <h2>Equipo Arbitral</h2></title>
+
+	<table id="data">
+
+	</table>
+</body>
+</html>
